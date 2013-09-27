@@ -1,0 +1,19 @@
+1.主要是联系怎样使用git链接github
+     a.新建一个repository。
+     b.下载git，进入bash界面。
+     c.touch README.TXT #新建一个文件
+     d.执行命令
+     $ git init
+     $ git add README.TXT  #将README.TXT文件加入git
+     $ git commit -m "you commit"  #写上你的commit
+     $ git remote add origin https://github.com/yinawake/ycgithub.git  #链接自己已经建好的repository
+     $ git push -u origin master     #上传
+
+----
+    如果要传入新文件
+     重复此代码即可
+     $ git add README.TXT  #将README.TXT文件加入git
+     $ git commit -m "you commit"  #写上你的commit
+     $ git remote add origin https://github.com/yinawake/ycgithub.git  #链接自己已经建好的repository
+     $ git push -u origin master     #上传
+
