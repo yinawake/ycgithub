@@ -1,0 +1,150 @@
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>html5 canvas</title>
+<script type="text/javascript">
+
+window.onload=function(){
+	var t = new TagSimpleClass();
+	t.drawTo('tutorial');
+}
+
+/*
+*随机生成颜色 by yinchao 
+*/
+function randomColor() {
+	var color1 = parseInt((Math.random()*16)).toString(16) + "";
+	var color2 = parseInt((Math.random()*16)).toString(16) + "";
+	var color3 = parseInt((Math.random()*16)).toString(16) + "";
+	var color4 = parseInt((Math.random()*16)).toString(16) + "";
+	var color5 = parseInt((Math.random()*16)).toString(16) + "";
+	var color6 = parseInt((Math.random()*16)).toString(16) + "";
+	return "#"+color1+color2+color3+color4+color5+color6;
+}
+
+/*
+*自定义类 by yinchao 自定义标签云的简易版本，还没有完善
+*/
+TagSimpleClass = function(canvas){
+	var me = this;
+	me.ctx = null;
+	me.canvas = null;
+	me.circleArr = [];
+	me.widthMax = 0;
+	me.selected = false;
+	
+	if(canvas) {
+		me.canvas = document.getElementById(canvas);
+		me.ctx = me.canvas.getContext('2d');
+	}
+	
+	me.drawTo = function(canvas) {
+		if(canvas) {
+			me.canvas = document.getElementById(canvas);
+			me.ctx = me.canvas.getContext('2d');
+		}
+		_initDraw();
+		me.initEvent();			
+	}
+	
+	/*
+	*初始化绘制图形
+	*/
+	function _initDraw() {
+		for(var i = 0; i < 11; i++) {
+			var c = new Circle(30 * i,30 * i ,5 * i,randomColor(),i);		
+			me.circleArr.push(c);		
+			c.draw(me.ctx);
+		}	
+	}
+	
+	/*
+	*初始化事件 定义为全局，方便以后继承重写
+	*/
+	me.initEvent = function() {
+		me.canvas.onmousedown = function(e){
+			var canvas = me.canvas;
+			var ctx = me.ctx;
+			e = e || event;
+			var x = e.clientX - this.offsetLeft;
+			var y = e.clientY - this.offsetTop;
+			
+			me.selected = false;
+			for(var i = me.circleArr.length; i >= 0; i-- ) {
+				var _circle = me.circleArr[i];				
+				if(_circle && 							//判断是否选中
+				   (_circle.x - _circle.radius) <= x &&
+					x <= (_circle.x + _circle.radius) &&
+					(_circle.y - _circle.radius) <= y &&
+					y <= (_circle.y + _circle.radius)
+				   ) {				   
+					_circle.isSelected = false;	
+					if(!me.selected) {
+						me.selected = true;
+						_circle.isSelected = true;							
+					}
+				} else if(_circle) {
+					_circle.isSelected = false;
+				}
+			}						
+			me.reDraw(me.circleArr,ctx);
+		}	
+	}
+	
+	/*
+	*重绘
+	*/
+	me.reDraw = function(circleArr,ctx) {
+		me.canvas.width = me.canvas.width;  //清屏的效果
+		for(var j = 0; j < circleArr.length; j++ ) {		//重新绘制全景
+			var _circle = circleArr[j];
+			if(_circle) {
+				_circle.draw(ctx);
+			}
+		}
+	}
+	
+	//自定义图形类
+	var Circle = function(x,y,r,c,t) {
+		var me = this;
+		me.x = x;
+		me.y = y;	
+		me.radius = r || 5;
+		me.color = c || '#00ff00';
+		me.selectedColor = "#ffffff";
+		me.text = t;
+		me.isSelected = false;
+		
+		me.draw = function(ctx) {
+			ctx.save();
+			ctx.beginPath();				
+			if(me.isSelected) {			
+				ctx.fillStyle = me.selectedColor;
+				console.log(me.text +"--"+ me.selectedColor);
+			} else {			
+				ctx.fillStyle = me.color;
+				console.log(me.text +"--"+me.color);
+			}
+			console.log(me);
+			
+			ctx.fillText(me.text,me.x + me.radius,me.y - me.radius);	//画字
+			ctx.arc(me.x,me.y,me.radius,2*Math.PI,0,true);				//画圆
+			
+			ctx.fill();
+			if(me.isSelected) { //选中则执行
+				//alert("selected");
+			}
+		}
+	}
+}
+</script>
+<style type="text/css">
+  canvas { border: 1px solid black; }
+</style>
+</head>
+<body style="background:#eeeeee;">	
+    <canvas id="tutorial" width="1000" height="350" style="display:block;"></canvas>	
+</body>
+<script>
+</script>
+</html>
