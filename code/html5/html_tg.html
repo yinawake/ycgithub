@@ -2,6 +2,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>html5 canvas</title>
+<style>
+
+</style>
 <script type="text/javascript">
 
 window.onload=function(){
@@ -10,16 +13,14 @@ window.onload=function(){
 }
 
 /*
-*随机生成颜色 by yinchao 
+*  随机生成颜色 by yinchao 
 */
-function randomColor() {
-	var color1 = parseInt((Math.random()*16)).toString(16) + "";
-	var color2 = parseInt((Math.random()*16)).toString(16) + "";
-	var color3 = parseInt((Math.random()*16)).toString(16) + "";
-	var color4 = parseInt((Math.random()*16)).toString(16) + "";
-	var color5 = parseInt((Math.random()*16)).toString(16) + "";
-	var color6 = parseInt((Math.random()*16)).toString(16) + "";
-	return "#"+color1+color2+color3+color4+color5+color6;
+function randomColor() {	
+	var color = "#";
+	for(var i = 0; i < 6; i++) {
+		color += parseInt((Math.random()*16)).toString(16) + "";
+	}
+	return color;
 }
 
 /*

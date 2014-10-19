@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{$Think.config.WEB_NAME}</title>				
+		
+		<load href='__JS__/jquery.js'/>
+		<import file='Public.Js.yui_uiscroll' basepath="__R__"/>
+		<import type='css' file='Public.Css.home' basepath="__R__"/>
+	</head>
+<body>
+	<!--页面头部-->
+	<include file='Public:header' />
+
+	<!--页面滑动展示部分-->
+	<div id='scrollDiv'>
+		<div class='scrollItemContainer'>
+			<div class='scrollItem' style='background-color:#F18989;'>1
+			</div>
+			<div class='scrollItem' style='background-color:#319B31;'>2
+			</div>
+			<div class='scrollItem' style='background-color:#4691DB;'>3
+			</div>
+			<div class='scrollItem' style='background-color:#F1F195;'>4
+			</div>
+		</div>
+	</div>
+
+	<!--页面信息分区部分-->
+	<div class="Index_zone index_width">
+		<div class='znoe' >
+			
+		</div>
+
+		<div class='znoe' >2</div>
+		
+		<div class='znoe' >3</div>
+	</div>
+	<!--页面底部-->
+	<include file='Index:bottom' />
+</body>
+<script type="text/javascript">
+	$(function(){
+		$("#scrollDiv").UIscroll({'width':1200,'height':300});
+	});
+</script>
+</html>	

@@ -1,0 +1,24 @@
+<!--
+	此模块负责顶部logo等信息展示，以及Menu的展示
+-->
+<import file='Public.Js.jquery-ui' basepath="__R__"/>
+<import type='css' file='Public.Css.custom-theme.jquery-ui' basepath="__R__"/>
+<div class='public_header'>
+	<div class='header_main'>
+		<p>
+			管理登陆|在线留言
+		</p>
+		<p>
+			联系我们|服务专线 025-888888
+		</p>
+		<h2>
+			<img class='header_logo' src='__IMG__/logo.png' />
+			<span class='header_word'>助跑者</span>
+			<ul id='header_menu'>				
+				<foreach name="menulist" item="menu">				    
+					<li>{$menu["menu_name"]}</li>
+				</foreach>
+			</ul>
+		</h2>
+	</div>
+</div>

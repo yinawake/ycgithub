@@ -1,0 +1,99 @@
+body{
+	margin: 0px;
+	background-image: url(../Image/background.jpg);
+}
+.public_header{	
+	height: 85px;
+	width: 100%;
+	padding: 0 0;
+	margin: 0 0;
+	text-align: center;
+}
+.index_width{
+	width: 1200px;
+	margin: 0 auto;
+}
+.public_header .header_main{	
+	height: 100%;
+	width: 1200px;
+	display: inline-block;
+}
+
+.public_header .header_logo{
+	/*margin-bottom:12px;*/
+}
+.public_header .header_word{
+	top:-20px;
+	left: -10px;
+	position: relative;
+}
+
+.header_main p{
+	font-weight: bolder;
+	text-align: right;
+	font: 62.5% "Trebuchet MS", sans-serif;
+	/*line-height: 12px;*/
+	margin:2px 0px 0px 0px;
+}
+.header_main h2 {
+	margin: 0px;
+}
+
+ul#header_menu {	
+	list-style: none;
+	display: inline-block;
+	color: white;
+	margin: 0px 0px 10px 0px;
+}
+ul#header_menu li{
+	font-size: 18px;
+	font-weight: normal;
+	float: left;
+	padding: 5px 20px;
+	background-color: #26528F;
+}
+.index_bottom {
+	margin-top: 5px;
+	position: relative;
+}
+.index_bottom hr{
+	margin: 0px;
+}
+.index_msg {
+	font-size: 12px;
+	height: 18px;
+	margin: 3px 0px;
+	cursor: pointer;
+}
+.index_bottom_search{
+	position: absolute;
+	top: 3px;
+	right: 10px;
+}
+.Index_zone
+{	
+	height:280px;
+	margin:2px auto;
+	display: table;
+}
+.Index_zone>.znoe {
+	border: 1px solid blue;
+	display: table-cell;
+	margin: 0 5px;
+}
+/*yui 自定义控件 */
+.yui .indexBtn {
+	text-align:center;			
+	z-index:2;
+	bottom: 25px;
+	position: relative;
+}
+.yui .indexBtn >.btnItem {
+	background-color:#DFE0DF;
+	margin:0 5px;
+	padding:5px;
+	cursor:pointer;
+}
+.yui .indexBtn >.btnItem.selected {
+	background-color:#949494;			
+}
